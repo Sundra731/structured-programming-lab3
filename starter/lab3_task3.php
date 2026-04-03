@@ -3,11 +3,11 @@
  * ICS 2371 — Lab 3: Control Structures I
  * Task 3: switch-case and match Expression [6 marks]
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [SUNDRA EVANS]
+ * @student    [ENE212-0148/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [03/04/2026]
  */
 
 // ══════════════════════════════════════════════════════════════
@@ -21,8 +21,33 @@
 
 $day = 3; // change this to test all cases
 
-// TODO: switch-case for day classifier
+switch ($day) {
+    case 1:
+        echo "Monday — Lecture day";
+        break;
+    case 2:
+        echo "Tuesday — Lecture day";
+        break;
+    case 3:
+        echo "Wednesday — Lecture day";
+        break;
+    case 4:
+        echo "Thursday — Lecture day";
+        break;
+    case 5:
+        echo "Friday — Lecture day";
+        break;
+    case 6:
+    case 7:
+        echo "Weekend";
+        break;
+    default:
+        echo "Invalid day";
+        break;
+}
 
+echo "<br>";
+echo "<br>";
 
 // ══════════════════════════════════════════════════════════════
 // EXERCISE B — HTTP Status Code Explainer
@@ -37,10 +62,37 @@ $day = 3; // change this to test all cases
 //   500 → "Internal Server Error — server fault"
 // default → "Unknown status code"
 
-$status_code = 404;
+$status_code = 200; // change this to test different status codes
 
-// TODO: switch-case for HTTP status
+switch ($status_code) {
+    case 200:
+        echo "OK: request succeeded";
+        break;
+    case 301:
+        echo "Moved Permanently: resource relocated";
+        break;
+    case 400:
+        echo "Bad Request: client error";
+        break;
+    case 401:
+        echo "Unauthorized: authentication required";
+        break;
+    case 403:
+        echo "Forbidden: access denied";
+        break;
+    case 404:
+        echo "Not Found: resource missing";
+        break;
+    case 500:
+        echo "Internal Server Error: server fault";
+        break;
+    default:
+        echo "Unknown status code";
+        break;
+}
 
+echo "<br>";
+echo "<br>";
 
 // ══════════════════════════════════════════════════════════════
 // EXERCISE C — PHP 8 match Expression
@@ -49,7 +101,21 @@ $status_code = 404;
 // Note: match uses STRICT comparison (===). No break needed.
 // Observe the difference in syntax and behaviour.
 
-// TODO: match expression for HTTP status — same logic as Exercise B
+
+$status_code = 500;
+
+$explanation = match ($status_code) {
+    200 => "OK: Request succeeded.",
+    301 => "Moved Permanently: resource relocated.",
+    400 => "Bad Request: client error.",
+    401 => "Unauthorized: authentication required.",
+    403 => "Forbidden: access denied.",
+    404 => "Not Found: resource missing.",
+    500 => "Internal Server Error: server fault.",
+    default => "Unknown Status: Code not recognized.",
+};
+
+echo $explanation;
 
 
 // ══════════════════════════════════════════════════════════════

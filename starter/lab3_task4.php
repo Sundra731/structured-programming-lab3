@@ -6,11 +6,11 @@
  * IMPORTANT: You must complete pseudocode AND flowchart in your PDF
  * report BEFORE writing any code below.
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [SUNDRA EVANS]
+ * @student    [ENE212-0148/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [03/04/2026]
  */
 
 // ── Problem: Student Loan Eligibility System ───────────────────────────────
@@ -39,16 +39,63 @@
 
 // ── Test data (change to test all branches) ───────────────────────────────
 $enrolled       = true;
-$gpa            = 3.1;
-$annual_income  = 180000;
-$previous_loan  = false;
+$gpa            = 2.0;
+$annual_income  = 50000;
+$previous_loan  = true;
 
 // ── STEP 1: Outer enrollment check ────────────────────────────────────────
-// TODO: nested if structure implementing all rules above
+$result = ""; // store final decision
+
+// Outer check
+if ($enrolled == false) {
+    $result = "Not eligible: must be an active student";
+
+} else {
+
+    // GPA check
+    if ($gpa < 2.0) {
+        $result = "Not eligible: GPA below minimum";
+
+    } else {
+
+        // Income check
+        if ($annual_income < 100000) {
+            $loan = "Full loan";
+
+        } elseif ($annual_income < 250000) {
+            $loan = "Partial 75%";
+
+        } elseif ($annual_income < 500000) {
+            $loan = "Partial 50%";
+
+        } else {
+            $result = "Not eligible: household income exceeds threshold";
+        }
+
+        // Only assign status if eligible
+        if ($result == "") {
+            $status = ($previous_loan) 
+                ? "Renewal application" 
+                : "New application";
+
+            $result = "$loan | $status";
+        }
+    }
+}
+
+
 
 
 // ── STEP 2: Display result ────────────────────────────────────────────────
-// TODO: output formatted result showing all input values and the decision
+echo "<hr>";
+echo "<b>HELB Loan Eligibility Result</b><br><br>";
+
+echo "Enrolled: " . ($enrolled ? "Yes" : "No") . "<br>";
+echo "GPA: $gpa<br>";
+echo "Annual Income: KES $annual_income<br>";
+echo "Previous Loan: " . ($previous_loan ? "Yes" : "No") . "<br><br>";
+
+echo "<b>Decision:</b> $result<br>";
 
 
 // ── Required Test Data Sets — screenshot each ─────────────────────────────
